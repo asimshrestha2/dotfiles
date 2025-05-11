@@ -14,8 +14,8 @@ get-rgb-gradient() {
     echo "${color_result[@]}"
 }
 
-total=50
-totaltime=25
+total=100
+totaltime=1
 currentPercent="0.0"
 
 totalTimeInSec=$(($totaltime * 60))
@@ -39,20 +39,32 @@ printTime() {
     echo "$startTime - ${timePastInMin}m ${timePastInSec}s"
 }
 
+color1="244,208,63" 
+color2="22,160,133"
+
 printBar() {
     totalString=""
     currentPercent=$(echo "scale=4; $SECONDS / $totalTimeInSec" | bc)
-    for i in $(seq 0 $total); do
-	local result=$(echo "scale=4; $i / $total" | bc)
-	local rdb=($(get-rgb-gradient "244,208,63" "22,160,133" "$result"))
-	totalString+="\e[38;2;${rdb[0]};${rdb[1]};${rdb[2]}m"
+    totalHalf=$((total/2))
+    for i in $(seq 0 $totalHalf); do
+	local result=$(echo "scale=4; $i / $totalHalf" | bc)
+	local result_p1=$(echo "scale=4; $i / $total" | bc)
+	local result_p2=$(echo "scale=4; ($i + 1) / $total" | bc)
+	local rdb_1=($(get-rgb-gradient "$color1" "$color2" "$result_p1"))
+	local rdb_2=($(get-rgb-gradient "$color1" "$color2" "$result_p2"))
+	totalString+="\e[38;2;${rdb_1[0]};${rdb_1[1]};${rdb_1[2]}m"
 	if (( $(echo "$result > $currentPercent" | bc -l) )) ; then
-	    totalString+=" "
+	    totalString+="\e[48;2;100;100;100m \e[0m"
 	else
-	    totalString+="█"
+	    if (( $(echo "$result_p1 < $currentPercent" | bc -l) )); then
+	        totalString+="\e[48;2;${rdb_2[0]};${rdb_2[1]};${rdb_2[2]}m"
+	    else
+	        totalString+="\e[48;2;100;100;100m"
+	    fi
+	    totalString+="▌\e[0m"
 	fi
     done
-    echo -e "\e[48;2;100;100;100m$totalString\e[0m"
+    echo -e "$totalString"
 }
 
 printf "\e[?25l"
@@ -60,7 +72,6 @@ while ((SECONDS < totalTimeInSec)); do
     printTime
     printBar
     printf "\e[2A"
-    sleep 1
 done
 printTime
 printBar
