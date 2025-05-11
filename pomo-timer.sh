@@ -3,9 +3,19 @@
 # printf "\x1b[48;2;255;100;0m\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 # printf "\x1b[{bg};2;{r};{g};{b}m\x1b[{fg};2;r;g;bmTRUECOLOR\x1b[0m\n"
 
+get-rgb-gradient() {
+    local color1=($(echo "$1" | tr ',' '\n'))
+    local color2=($(echo "$2" | tr ',' '\n'))
+    local colorfactor=$3
+    local color_result=($(echo "$1" | tr ',' '\n'))
+    for i in $(seq 0 2); do
+	color_result[$i]="$(echo "${color_result[$i]} + $colorfactor * (${color2[$i]} - ${color1[$i]})" | bc | awk '{printf("%d\n",$1 + 0.5)}' )"
+    done
+    echo "${color_result[@]}"
+}
+
 total=50
 totaltime=25
-totaltime=1
 currentPercent="0.0"
 
 totalTimeInSec=$(($totaltime * 60))
@@ -33,14 +43,16 @@ printBar() {
     totalString=""
     currentPercent=$(echo "scale=4; $SECONDS / $totalTimeInSec" | bc)
     for i in $(seq 0 $total); do
-	result=$(echo "scale=4; $i / $total" | bc)
-	if (( $(echo "$result > $currentPercent" |bc -l) )) ; then
-		totalString+=" "
-	    else
-		totalString+="█"
+	local result=$(echo "scale=4; $i / $total" | bc)
+	local rdb=($(get-rgb-gradient "244,208,63" "22,160,133" "$result"))
+	totalString+="\e[38;2;${rdb[0]};${rdb[1]};${rdb[2]}m"
+	if (( $(echo "$result > $currentPercent" | bc -l) )) ; then
+	    totalString+=" "
+	else
+	    totalString+="█"
 	fi
     done
-    echo -e "\e[48;2;100;100;100m\e[38;2;255;100;10m$totalString\e[0m"
+    echo -e "\e[48;2;100;100;100m$totalString\e[0m"
 }
 
 printf "\e[?25l"
