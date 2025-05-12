@@ -51,7 +51,7 @@ done
 printBar() {
     local totalString=""
     local currentPercent=$(echo "scale=4; $SECONDS / $totalTimeInSec" | bc)
-    local totalHalf=$((total/2))
+    local totalHalf=$(((total/2) - 1))
     for i in $(seq 0 $totalHalf); do
 	local result=$(echo "scale=2; $i / $totalHalf" | bc)
 	local rgbIndex=$(($i * 2))
