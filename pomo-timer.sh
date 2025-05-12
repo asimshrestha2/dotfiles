@@ -15,7 +15,7 @@ get-rgb-gradient() {
 }
 
 total=100
-totaltime=1
+totaltime=2
 currentPercent="0.0"
 
 totalTimeInSec=$(($totaltime * 60))
@@ -42,22 +42,29 @@ printTime() {
 color1="244,208,63" 
 color2="22,160,133"
 
+gradientColors=()
+for i in $(seq 0 $total); do
+    color_f=$(echo "scale=2; $i / $total" | bc)
+    gradientColors+=("$(get-rgb-gradient "$color1" "$color2" "$color_f")")
+done
+
 printBar() {
-    totalString=""
-    currentPercent=$(echo "scale=4; $SECONDS / $totalTimeInSec" | bc)
-    totalHalf=$((total/2))
+    local totalString=""
+    local currentPercent=$(echo "scale=4; $SECONDS / $totalTimeInSec" | bc)
+    local totalHalf=$((total/2))
     for i in $(seq 0 $totalHalf); do
-	local result=$(echo "scale=4; $i / $totalHalf" | bc)
-	local result_p1=$(echo "scale=4; $i / $total" | bc)
-	local result_p2=$(echo "scale=4; ($i + 1) / $total" | bc)
-	local rdb_1=($(get-rgb-gradient "$color1" "$color2" "$result_p1"))
-	local rdb_2=($(get-rgb-gradient "$color1" "$color2" "$result_p2"))
-	totalString+="\e[38;2;${rdb_1[0]};${rdb_1[1]};${rdb_1[2]}m"
+	local result=$(echo "scale=2; $i / $totalHalf" | bc)
+	local rgbIndex=$(($i * 2))
+	local rgb_1=(${gradientColors[$rgbIndex]})
+	totalString+="\e[38;2;${rgb_1[0]};${rgb_1[1]};${rgb_1[2]}m"
 	if (( $(echo "$result > $currentPercent" | bc -l) )) ; then
 	    totalString+="\e[48;2;100;100;100m \e[0m"
 	else
-	    if (( $(echo "$result_p1 < $currentPercent" | bc -l) )); then
-	        totalString+="\e[48;2;${rdb_2[0]};${rdb_2[1]};${rdb_2[2]}m"
+	    local result_p1=$(echo "scale=4; ($rgbIndex + 1) / $total" | bc)
+	    if (( $(echo "$result_p1 <= $currentPercent" | bc -l) )); then
+		local tempI=$(($rgbIndex + 1))
+		local rgb_2=(${gradientColors[$tempI]})
+	        totalString+="\e[48;2;${rgb_2[0]};${rgb_2[1]};${rgb_2[2]}m"
 	    else
 	        totalString+="\e[48;2;100;100;100m"
 	    fi
@@ -69,9 +76,14 @@ printBar() {
 
 printf "\e[?25l"
 while ((SECONDS < totalTimeInSec)); do
+    startTimeForDiff="$(date +%s.%N)"
     printTime
     printBar
+    currentTimeForDiff="$(date +%s.%N)"
+    diff=$(echo "scale=2; $currentTimeForDiff-$startTimeForDiff" | bc)
     printf "\e[2A"
+    # echo "diff: $diff"
+    sleep 1
 done
 printTime
 printBar
