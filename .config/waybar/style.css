@@ -1,0 +1,145 @@
+@import "./rose-pine-moon.css";
+
+* {
+  font-family: "Source Code Pro";
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px 5px;
+}
+
+#workspaces {
+  border-radius: 0.5rem;
+  margin: 5px;
+  background-color: @base;
+  border: 1px solid @overlay;
+  font-weight: bold;
+}
+
+#workspaces button {
+  color: @muted;
+  padding: 0.4rem;
+}
+
+#workspaces button.focused {
+  color: @text;
+}
+
+#workspaces button:hover {
+  color: @text;
+}
+
+#custom-media,
+#cpu,
+#memory,
+#temperature,
+#keyboard-state,
+#language,
+#window,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#wireplumber,
+#idle_inhibitor,
+#custom-notification,
+#custom-lock,
+#custom-power {
+  border: 1px solid @overlay;
+  background-color: @surface;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+#memory {
+  color: @foam;
+}
+
+#temperature {
+  color: @rose;
+}
+
+#clock {
+  color: @gold;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+}
+
+#language {
+  border-radius: 0px 0.5rem 0.5rem 0px;
+  margin-right: 1rem;
+}
+
+#battery {
+  color: @rose;
+}
+
+#battery.charging {
+  color: @iris;
+}
+
+#battery.warning:not(.charging) {
+  color: @rose;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
+#pulseaudio,
+#wireplumber.sink {
+  color: @maroon;
+  border-radius: 0.5rem 0px 0px 0.5rem;
+  margin-left: 1rem;
+}
+
+
+#custom-media {
+  color: @mauve;
+  border-radius: 0.5rem;
+}
+
+
+#idle_inhibitor {
+	border-radius: 0.5rem 0px 0px 0.5rem;
+    color: @lavender;
+}
+
+#custom-notification {
+	color: @lavender;
+}
+
+#custom-power {
+    margin-right: 1rem;
+    border-radius: 0px 0.5rem 0.5rem 0px;
+    color: @rose;
+}
+
+#window {
+  color: @foam;
+  border-radius: 0.5rem;
+}
+
+window#waybar.empty #window {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+/*  background-color: rgba(66,66,66,0.5); */ /* transparent */
+  background-color: transparent;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
