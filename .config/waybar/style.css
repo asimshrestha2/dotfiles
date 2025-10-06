@@ -15,7 +15,7 @@
 #workspaces {
   border-radius: 0.5rem;
   margin: 5px;
-  background-color: @base;
+  background-color: @surface;
   border: 1px solid @overlay;
   font-weight: bold;
 }
@@ -47,6 +47,7 @@
 #pulseaudio,
 #wireplumber,
 #idle_inhibitor,
+#custom-os_button,
 #custom-notification,
 #custom-lock,
 #custom-power {
@@ -63,13 +64,20 @@
 
 #temperature {
   color: @rose;
+  border-radius: 0px 0.5rem 0.5rem 0px;
+  margin-right: 1rem;
 }
 
+#custom-os_button,
 #clock {
   color: @gold;
   margin-right: 1rem;
-  margin-left: 1rem;
   border-radius: 0.5rem;
+}
+
+#custom-os_button {
+  color: @iris;
+  margin-left: 1rem;
 }
 
 #language {

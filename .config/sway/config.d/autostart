@@ -4,8 +4,18 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 
 exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
 
+exec autotiling-rs
+
 # Background
 exec blueman-applet
 exec dex -a -e sway
+exec firefox
 
 assign [app_id="com.discordapp.Discord"] 8
+
+# for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
