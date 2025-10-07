@@ -50,6 +50,7 @@ workspace 8 output DP-2
 workspace 9 output HDMI-A-1
 
 exec_always xrandr --output DP-1 --primary
+focus output DP-1
 
 output * allow_tearing yes
 output * bg /home/asim/Nextcloud/Photos/Panty and Stocking/op_2_6.jpg fill
@@ -105,7 +106,7 @@ input type:pointer {
     # Start your launcher
     bindsym $mod+d exec $menu
 
-	bindsym $mod+Escape exec swaylock
+	bindsym $mod+Escape exec wleave
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
