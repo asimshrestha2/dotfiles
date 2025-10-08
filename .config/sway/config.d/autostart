@@ -2,6 +2,8 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
 
 exec autotiling-rs
