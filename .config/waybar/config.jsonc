@@ -241,16 +241,15 @@
 		// "on-click": "pavucontrol"
 	},
 	"custom/media": {
-		"format": "{icon} {text}",
+		"format": "{icon}{text}",
 		"return-type": "json",
-		"max-length": 40,
 		"format-icons": {
-			"spotify": "",
-			"default": "🎜"
+			"Playing": " ",
+			"Paused": " ",
 		},
-		"escape": true,
-		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-		// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+		"max-length": 70,
+		"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+		"on-click": "playerctl play-pause",
 	},
 	"wireplumber#sink": {
 		"format": "{volume}% {icon}",
