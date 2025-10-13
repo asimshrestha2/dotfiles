@@ -94,6 +94,7 @@ window {
 mainbox {
     padding: 0;
     border:  0;
+	// orientation: horizontal;
 }
 message {
     padding:      1px ;
