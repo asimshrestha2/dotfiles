@@ -637,4 +637,4 @@ binds {
 }
 
 spawn-at-startup "firefox"
-spawn-sh-at-startup "XDG_MENU_PREFIX=arch- kbuildsycoca6"
+spawn-sh-at-startup "env XDG_MENU_PREFIX=arch- kbuildsycoca6"
