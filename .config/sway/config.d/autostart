@@ -5,6 +5,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
 exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+exec env XDG_MENU_PREFIX=arch- kbuildsycoca6
 
 exec autotiling-rs
 
@@ -20,4 +21,5 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
+for_window [app_id="Waydroid"] floating enable
 for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt

@@ -13,11 +13,13 @@
 		"custom/os_button",
 		"clock",
 		"sway/workspaces",
+		"niri/workspaces",
 		"sway/mode",
 		"sway/scratchpad"
 	],
 	"modules-center": [
-		"sway/window"
+		"sway/window",
+		"niri/window"
 	],
 	"modules-right": [
 		"custom/media",
@@ -39,7 +41,7 @@
 		"custom/power"
 	],
 	// Modules configuration
-	"sway/workspaces": {
+	"niri/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,
 		"warp-on-scroll": false,
@@ -84,7 +86,7 @@
 		"tooltip": true,
 		"tooltip-format": "{app}: {title}"
 	},
-	"sway/window": {
+	"niri/window": {
 		"format": "{title}",
 		"max-length": 50,
 		"rewrite": {
@@ -247,8 +249,8 @@
 			"Playing": " ",
 			"Paused": " ",
 		},
-		"max-length": 70,
-		"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+		"max-length": 40,
+		"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -i firefox -F",
 		"on-click": "playerctl play-pause",
 	},
 	"wireplumber#sink": {

@@ -9,6 +9,8 @@ list=(
 	"rofi"
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-wlr"
+	"niri"
+	"systemd/user"
 	# "fastfetch"
 )
 
