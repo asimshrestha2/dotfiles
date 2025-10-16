@@ -395,8 +395,8 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ && wp-vol"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && wp-vol"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -616,6 +616,15 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
+	Mod+Ctrl+Shift+Alt+1 { spawn "~/code/dotfiles/bin/move-to-and-launch.sh" "DP-2" \
+		"flatpak run com.mastermindzh.tidal-hifi" "com.mastermindzh.tidal-hifi"; }
+	Mod+Ctrl+Shift+Alt+2 { spawn "gnome-system-monitor"; }
+	Mod+Ctrl+Shift+Alt+3 { spawn-sh "notify-send 'hi app 3'"; }
+	Mod+Ctrl+Shift+Alt+4 { spawn-sh "notify-send 'hi app 4'"; }
+	XF86Tools { spawn "firefox"; }
+	XF86Launch5 { spawn-sh "notify-send 'hi 2'"; }
+	XF86Launch6 { spawn-sh "notify-send 'hi 3'"; }
+	XF86Launch7 { spawn "steam"; }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.
