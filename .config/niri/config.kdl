@@ -281,12 +281,6 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "swaybg --mode fill --image /home/asim/Pictures/3840x2100.png"
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
@@ -297,7 +291,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -356,6 +350,13 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
+}
+
+// swaync
+layer-rule {
+    match namespace="^swaync-notification-window$"
+
+    block-out-from "screencast"
 }
 
 window-rule {
@@ -619,7 +620,9 @@ binds {
 	Mod+Ctrl+Shift+Alt+1 { spawn "~/code/dotfiles/bin/move-to-and-launch.sh" "DP-2" \
 		"flatpak run com.mastermindzh.tidal-hifi" "com.mastermindzh.tidal-hifi"; }
 	Mod+Ctrl+Shift+Alt+2 { spawn "gnome-system-monitor"; }
-	Mod+Ctrl+Shift+Alt+3 { spawn-sh "notify-send 'hi app 3'"; }
+	// org.signal.Signal
+	Mod+Ctrl+Shift+Alt+3 { spawn "~/code/dotfiles/bin/move-to-and-launch.sh" "DP-2" \
+		"flatpak run org.signal.Signal" "org.signal.Signal"; }
 	Mod+Ctrl+Shift+Alt+4 { spawn-sh "notify-send 'hi app 4'"; }
 	XF86Tools { spawn "firefox"; }
 	XF86Launch5 { spawn-sh "notify-send 'hi 2'"; }
@@ -647,3 +650,5 @@ binds {
 
 spawn-at-startup "firefox"
 spawn-sh-at-startup "kbuildsycoca6 --noincremental --track menu"
+// spawn-at-startup "/home/asim/code/personal/steam-start.sh"
+// spawn-sh-at-startup "/home/asim/code/personal/niri-single-col-workspace.sh HDMI-A-1"

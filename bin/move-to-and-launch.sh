@@ -3,8 +3,6 @@
 original_id=$(niri msg --json focused-window | jq .id)
 req_id=$(niri msg --json windows | jq --arg app_id "$3" '.[] | select(.app_id == $app_id) | .id')
 
-echo "$req_id $3"
-
 if [[ ! -z "${req_id}" ]]; then
 	notify-send "'$3' already open"
 	exit 

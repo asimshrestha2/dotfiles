@@ -12,18 +12,18 @@
 	"modules-left": [
 		"custom/os_button",
 		"clock",
-		"sway/workspaces",
+		// "sway/workspaces",
 		"niri/workspaces",
 		"sway/mode",
 		"sway/scratchpad"
 	],
 	"modules-center": [
-		"sway/window",
+		// "sway/window"
 		"niri/window"
 	],
 	"modules-right": [
 		"custom/media",
-		"mpd",
+		// "mpd",
 		"pulseaudio",
 		// "power-profiles-daemon",
 		"cpu",
@@ -42,6 +42,22 @@
 	],
 	// Modules configuration
 	"niri/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"warp-on-scroll": false,
+		"format": "{icon}",
+		"format-icons": {
+			"1": "一",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"urgent": "",
+			//"focused": "",
+			"default": ""
+		}
+	},
+	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,
 		"warp-on-scroll": false,
@@ -85,6 +101,14 @@
 		],
 		"tooltip": true,
 		"tooltip-format": "{app}: {title}"
+	},
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 50,
+		"rewrite": {
+			"(.*) — Mozilla Firefox": "󰈹 $1",
+			"nvim (.*)": " $1"
+		}
 	},
 	"niri/window": {
 		"format": "{title}",

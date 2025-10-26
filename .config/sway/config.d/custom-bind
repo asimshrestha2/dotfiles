@@ -1,0 +1,11 @@
+bindsym Mod4+Ctrl+Shift+Alt+1 exec notify-send 'hi app 1'
+bindsym Mod4+Ctrl+Shift+Alt+2 exec gnome-system-monitor
+
+# org.signal.Signal
+bindsym Mod4+Ctrl+Shift+Alt+3 exec notify-send 'hi app 3'
+bindsym Mod4+Ctrl+Shift+Alt+4 exec notify-send 'hi app 4'
+bindsym XF86Tools exec firefox
+bindsym XF86Launch5 exec notify-send 'hi 2'
+bindsym XF86Launch6 exec notify-send 'hi 3'
+bindsym XF86Launch7 exec steam
+

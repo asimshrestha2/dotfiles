@@ -10,8 +10,9 @@ list=(
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-wlr"
 	"niri"
-	"systemd/user",
+	"systemd",
 	"fish"
+	"ghostty"
 	# "fastfetch"
 )
 
