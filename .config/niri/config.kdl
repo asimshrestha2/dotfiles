@@ -343,6 +343,10 @@ window-rule {
 }
 
 window-rule {
+	draw-border-with-background false
+}
+
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
@@ -400,6 +404,11 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && wp-vol"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+	XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+	XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+	XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+	XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),

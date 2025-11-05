@@ -44,7 +44,6 @@
 font-size = 14
 theme = Everforest Dark Hard
 gtk-tabs-location = bottom
-window-decoration = none
 command=/usr/bin/fish --login --interactive
 
 background-opacity=0.90
