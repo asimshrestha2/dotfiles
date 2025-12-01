@@ -119,6 +119,10 @@ output "DP-2" {
 	transform "270"
 }
 
+xwayland-satellite {
+	path "~/code/github/xwayland-satellite/target/release/xwayland-satellite"
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
