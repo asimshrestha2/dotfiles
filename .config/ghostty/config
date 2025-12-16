@@ -41,9 +41,11 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+
+maximize = true
 font-size = 14
 theme = Everforest Dark Hard
 gtk-tabs-location = bottom
 command=/usr/bin/fish --login --interactive
-
+shell-integration-features = ssh-env,ssh-terminfo
 background-opacity=0.90

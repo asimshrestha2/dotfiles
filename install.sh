@@ -21,7 +21,8 @@ fi
 
 case $OS_NAME in
 	arch)
-		$SUDO pacman -Syu tmux fastfetch steam flatpak gcc make git ripgrep fd unzip neovim
+		$SUDO pacman -Syu fastfetch steam flatpak gcc make git ripgrep fd unzip \
+			neovim lazygit tmux
 	;;
 	debian|ubuntu) 
 		$SUDO add-apt-repository ppa:neovim-ppa/unstable -y
