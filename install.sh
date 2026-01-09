@@ -21,8 +21,10 @@ fi
 
 case $OS_NAME in
 	arch)
-		$SUDO pacman -Syu fastfetch steam flatpak gcc make git ripgrep fd unzip \
-			neovim lazygit tmux
+		yay -S --needed --noconfirm gcc make unzip rsync \
+			fd tldr zoxide ripgrep fzf bat fastfetch htop firefox librewolf-bin \
+			flatpak mission-center kdeconnect blender vlc mpv ffmpeg fish ghostty \
+			steam git libreoffice-fresh keepassxc neovim tmux
 	;;
 	debian|ubuntu) 
 		$SUDO add-apt-repository ppa:neovim-ppa/unstable -y
@@ -31,6 +33,11 @@ case $OS_NAME in
 	;;
 	*) exit ;;
 esac
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub -y com.heroicgameslauncher.hgl com.discordapp.Discord \
+	org.signal.Signal com.obsproject.Studio com.protonvpn.www \
+	com.nextcloud.desktopclient.nextcloud
 
 # Nvim config
 git clone https://github.com/asimshrestha2/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
