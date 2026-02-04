@@ -24,16 +24,18 @@ download_godot() {
 	local download_name="Godot_v${tag_name}_linux.${ARCH}"
 	local download_url="https://github.com/godotengine/godot/releases/download/${tag_name}/$download_name.zip"
 	curl -L -O "$download_url"
-	unzip "$download_name.zip"
+	unzip -o "$download_name.zip"
 
 	local link_loc="/home/$USER/.local/bin/godot"
 	mkdir -p "/home/$USER/.local/bin/"
 
-	if [ -e $link_loc ]; then
+	if [[ -L "$link_loc"  ]]; then
+		echo "removing old godot bin file"
 		rm $link_loc
 	fi
 
 	ln -s "$(pwd)/$download_name" "/home/$USER/.local/bin/godot"
+	echo "Godot version updated"
 }
 
 case "$1" in
