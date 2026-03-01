@@ -120,7 +120,7 @@ output "DP-2" {
 }
 
 xwayland-satellite {
-	path "~/code/github/xwayland-satellite/target/release/xwayland-satellite"
+	// path "~/code/github/xwayland-satellite/target/release/xwayland-satellite"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -661,6 +661,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "firefox"
 spawn-sh-at-startup "kbuildsycoca6 --noincremental --track menu"
 // spawn-at-startup "/home/asim/code/personal/steam-start.sh"
