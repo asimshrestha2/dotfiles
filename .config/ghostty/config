@@ -43,10 +43,8 @@
 # resize-overlay-duration = 4s 200ms
 
 font-size = 14
-theme = Everforest Dark Hard
+theme = dankcolors
 gtk-tabs-location = bottom
 command=/usr/bin/fish --login --interactive
 shell-integration-features = ssh-env,ssh-terminfo
 background-opacity=0.90
-window-width=110
-window-height=25

@@ -4,6 +4,6 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swaybg -m fill -i "/home/asim/Pictures/girl_1.jpg"
+ExecStart=/usr/bin/swaybg -m fill -i "/home/asim/Nextcloud/Photos/Random/wallhaven-e83jg8.jpg"
 Restart=on-failure
 
