@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 font-size = 14
-theme = dankcolors
+theme = noctalia
 gtk-tabs-location = bottom
 command=/usr/bin/fish --login --interactive
 shell-integration-features = ssh-env,ssh-terminfo
