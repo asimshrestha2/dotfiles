@@ -13,6 +13,8 @@ list=(
 	"systemd"
 	"fish"
 	"ghostty"
+	"mpd"
+	"rmpc"
 	# "fastfetch"
 )
 
