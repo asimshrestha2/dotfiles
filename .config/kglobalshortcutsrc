@@ -230,6 +230,8 @@ karousel-column-move-to-desktop-9=Meta+Ctrl+Shift+F9,none,Karousel: Move column 
 karousel-column-toggle-stacked=Meta+X,none,Karousel: Toggle stacked layout for focused column
 karousel-column-width-decrease=Meta+Ctrl+-,none,Karousel: Decrease column width
 karousel-column-width-increase=Meta+Ctrl++,none,Karousel: Increase column width
+karousel-column-width-maximize=,none,Karousel: Increase column width to maximum
+karousel-column-width-minimize=,none,Karousel: Decrease column width to minimum
 karousel-columns-squeeze-left=,none,Karousel: Squeeze left column onto the screen
 karousel-columns-squeeze-right=Meta+Ctrl+D,none,Karousel: Squeeze right column onto the screen
 karousel-columns-width-equalize=Meta+Ctrl+=,none,Karousel: Equalize widths of visible columns
@@ -377,10 +379,6 @@ _launch=none
 
 [services][org.kde.plasma-systemmonitor.desktop]
 _launch=Meta+Ctrl+Alt+@
-
-[services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=
-OpenWithoutScreenshot=
 
 [services][org.signal.Signal.desktop]
 _launch=Meta+Ctrl+Alt+#

@@ -111,11 +111,6 @@ output "Dell Inc. AW3423DWF 13982S3" {
 	focus-at-startup
 }
 
-environment {
-	QT_QPA_PLATFORM "wayland"
-	DISPLAY ":0"
-}
-
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -289,8 +284,8 @@ hotkey-overlay {
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
 
-workspace "main"
-workspace "chat"
+// workspace "chat"
+// workspace "main"
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -334,10 +329,9 @@ window-rule {
 	open-floating true
 }
 
-window-rule {
-	match app-id=r#"discord"# at-startup=true
-	open-on-workspace "chat"
-}
+// window-rule {
+// 	match app-id=r#"discord"# at-startup=true
+// }
 
 window-rule {
 	draw-border-with-background false
@@ -670,6 +664,7 @@ spawn-sh-at-startup "systemctl --user restart xdg-desktop-portal.service"
 // spawn-sh-at-startup "cosmic-notifications & cosmic-panel"
 spawn-sh-at-startup "kbuildsycoca6 --noincremental"
 
+// NOCTALIA SHELL
 spawn-at-startup "qs" "-c" "noctalia-shell"
 
 window-rule {
@@ -685,10 +680,26 @@ debug {
 	honor-xdg-activation-with-invalid-serial
 }
 
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+include "./noctalia.kdl"
+
+// GAME RULES
 window-rule {
 	match app-id="^steam_app" is-active=true
 	variable-refresh-rate true
 }
 
-include "./noctalia.kdl"
+window-rule {
+	match app-id=".exe$" is-active=true
+	variable-refresh-rate true
+}
+
+window-rule {
+	match app-id="^gamescope" is-active=true
+	variable-refresh-rate true
+}
 
