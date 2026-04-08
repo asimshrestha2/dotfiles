@@ -19,8 +19,16 @@ if [ "$(id -u)" -ne 0 ]; then
 	SUDO="sudo"
 fi
 
+installyay() {
+	$SUDO pacman -S --needed git base-devel
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
+}
+
 case $OS_NAME in
 	arch)
+		installyay
 		yay -S --needed --noconfirm gcc make unzip rsync \
 			fd tldr zoxide ripgrep fzf bat fastfetch htop firefox librewolf-bin \
 			flatpak mission-center kdeconnect blender vlc mpv ffmpeg fish ghostty \
