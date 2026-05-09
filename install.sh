@@ -33,12 +33,13 @@ case $OS_NAME in
 		# TODO: install steam
 
 		yay -S --needed --noconfirm gcc make unzip rsync \
-			fd tldr zoxide ripgrep fzf bat fastfetch htop firefox librewolf-bin \
+			fd tldr zoxide ripgrep fzf bat fastfetch imagemagick htop firefox librewolf-bin \
 			flatpak mission-center gnome-disk-utility \
 			kdeconnect blender vlc mpv ffmpeg fish ghostty \
 			git lazygit libreoffice-fresh keepassxc \
 			neovim wl-clipboard tree-sitter-cli jq just mold tmux \
 			noto-fonts-cjk ttf-noto-nerd ttf-sourcecodepro-nerd \
+			fcitx5 fcitx5-gtk fcitx5-qt fcitx5-mozc fcitx5-configtool \
 			gamescope
 	;;
 	debian|ubuntu) 
